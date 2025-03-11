@@ -5,15 +5,13 @@ from PIL import Image
 
 def generate_flowchart_structure(user_input, api_key):
     """Uses Google Gemini API to generate a structured Mermaid flowchart."""
-    os.environ["AIzaSyAZc_D_kRPTLf8Jv3uvtUZqD5wqTcvIW_k"] = api_key  # Set API key in environment
+    os.environ["Paste your API key here"] = api_key  # Set API key in environment
     genai.configure(api_key=api_key)
 
     model = genai.GenerativeModel("gemini-2.0-flash")
     response = model.generate_content(f"Generate a top-down Mermaid flowchart for: {user_input}. "
                                       "Ensure the flowchart has NO labels like A, B, C before each step. "
                                       "Make all connections directly between shapes."
-                                      "input statement always in parallelogram shape."
-                                      "Input first number,Sum = First Number + Second Number,Display Sum,End mention the flowchart content that inside {} bracket"
                                       )
 
     return response.text
@@ -78,11 +76,7 @@ def create_flowchart(flowchart_text, output_file="flowchart"):
     image.show()
 
 def main():
-    api_key = "AIzaSyAZc_D_kRPTLf8Jv3uvtUZqD5wqTcvIW_k"
-    
-    if not api_key:
-        print("❌ Error: No API key provided. Please enter a valid Google Gemini API key.")
-        return
+    api_key = "Paste your API key here"
     
     user_input = input("📝 Describe your program or algorithm: ")
     
